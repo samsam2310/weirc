@@ -15,5 +15,5 @@ _exitcode() {
 	fi
 	echo -ne "\e[0m"
 }
-export PS1='\e[33;1m\u@ \h: \e[34;1m\w\n$(_exitcode)(\@)\$ '
-
+export PS1='\e[33;1m\u@ \h\e[35;1m($0): \e[34;1m\w\n$(_exitcode)(\@)\$ '
+export ENV='~/.bashrc'
