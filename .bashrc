@@ -7,13 +7,22 @@
 
 alias ls='ls --color=auto'
 
-_exitcode() {
-	if [[ $? == 0 ]]; then
-		echo -ne "\e[32;1m^_^"
+
+_get_ps1() {
+	local ec=$?
+	local c1='\[\e[31;1m\]'
+	local c2='\[\e[32;1m\]'
+	local c3='\[\e[33;1m\]'
+	local c4='\[\e[34;1m\]'
+	local c5='\[\e[35;1m\]'
+	local nc='\[\e[0m\]'
+	echo -n "${c3}\u@ \h${c5} ($0): ${c4}\w\n"
+	if [[ $ec == 0 ]]; then
+		echo -ne "${c2}^_^"
 	else
-		echo -ne "\e[31;1m>_<($?)"
+		echo -ne "${c1}>_<($?)"
 	fi
-	echo -ne "\e[0m"
+	echo -n "${nc}(\@)\$ "
 }
-export PS1='\e[33;1m\u@ \h\e[35;1m($0): \e[34;1m\w\n$(_exitcode)(\@)\$ '
+export PROMPT_COMMAND='PS1=$(_get_ps1)'
 export ENV='~/.bashrc'
