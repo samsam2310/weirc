@@ -5,9 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-
-
 _get_ps1() {
 	local ec=$?
 	local c1='\[\e[31;1m\]'
@@ -25,4 +22,3 @@ _get_ps1() {
 	echo -n "${nc}(\@)\$ "
 }
 export PROMPT_COMMAND='PS1=$(_get_ps1)'
-export ENV='~/.bashrc'

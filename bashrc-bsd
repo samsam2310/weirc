@@ -7,7 +7,6 @@
 
 alias ls='ls -FG'
 
-
 _get_ps1() {
 	local ec=$?
 	local c1='\[\e[31;1m\]'
@@ -25,4 +24,3 @@ _get_ps1() {
 	echo -n "${nc}(\@)\$ "
 }
 export PROMPT_COMMAND='PS1=$(_get_ps1)'
-export ENV='~/.bashrc'
